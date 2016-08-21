@@ -1,0 +1,83 @@
+<div class="container-fluid"> 
+	<div class="row">
+		<div class="col-md-4 col-md-offset-4">
+			<table class="table .table-condensed">
+
+				<h2> History </h2>
+				<tr>
+					<th>#</th>
+					<th>Name</th>
+					<th>Dice</th>
+					<th>Result</th>
+				</tr>
+
+				{% for name, dice, result in data %}
+				<tr>
+					<td><p>{{ loop.index }}</p></td>
+					<!-- id is the important one -->
+					<td><p id="name{{ loop.index }}">{{ name }}</p></td>
+					<td><p id="dice{{ loop.index }}">{{ dice }}</p></td>
+					<td><p id="result{{ loop.index }}">{{ result }}</p></td>
+				</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+
+		<div class="col-md-2 col-md-offset-1">
+		<h3>Highest Critchance</h3><br>
+        (d20 only, baseline is 5%, needs more than 100 rolls to be representative!)<br><br>
+        {% for name, chance, throw, avg in chances %}
+		{{  name }}: <td> <p style="display:inline" id="chance{{ loop.index }}">{{ chance }}</p></td>%, <td><p style="display:inline" id="throw{{ loop.index }}">{{ throw }}</p></td> rolls, <td><p style="display:inline" id="avg{{ loop.index }}">{{ avg }}</p></td> avg<br><br>
+        {% endfor %}
+		</div>
+	</div>
+
+	<form action="/dice/" method="POST">
+		<div class="row">
+			<!-- submit and value are the important ones -->
+			<div class="col-md-1 col-md-offset-4 col-xs-2 col-xs-offset1">
+				<input type="image" src="{{ url_for('static', filename='img/d4.png') }}" name="submit" value="D4" alt="W4"> 
+			</div>
+
+			<div class="col-md-1 col-xs-2">
+				<input type="image" src="{{ url_for('static', filename='img/d6.png') }}" name="submit" value="D6" alt="W6">
+			</div>
+
+			<div class="col-md-1 col-xs-2">
+				<input type="image" src="{{ url_for('static', filename='img/d8.png') }}" name="submit" value="D8" alt="W8">
+			</div>
+
+			<div class="col-md-1 col-xs-2">
+				<input type="image" src="{{ url_for('static', filename='img/d10.png') }}" name="submit" value="D10" alt="W10">
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-1 col-md-offset-4 col-xs-2 col-xs-offset1">
+				<input type="image" src="{{ url_for('static', filename='img/d12.png') }}" name="submit" value="D12" alt="W12">
+			</div>
+
+			<div class="col-md-1 col-xs-2">
+				<input type="image" src="{{ url_for('static', filename='img/d20.png') }}" name="submit" value="D20" alt="W20">
+			</div>
+
+			<div class="col-md-1 col-xs-2">
+				<input type="image" src="{{ url_for('static', filename='img/d100.png') }}" name="submit" value="D100" alt="W100">
+			</div>
+
+			<div class="col-md-1 col-xs-3">
+				<div class="universal-center">
+					<div class="form-group">
+						<select class="form-control" name="select">
+							{% for name in names %}
+							<option>{{ name }}</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</form>
+</div>

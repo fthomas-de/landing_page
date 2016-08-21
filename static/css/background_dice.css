@@ -1,0 +1,43 @@
+body {
+
+    color: black;
+    margin-top: 150px;
+
+    background: url('../img/texture.png') center center fixed;
+
+
+
+    min-height:100%;
+
+}
+
+html{
+    min-height:100%;
+}
+
+p.result {
+	font-size: 1em; 
+}
+
+.align-bottom-center{
+    margin-bottom: 1.5em;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+.align-left-center {
+    margin-left: 3em;
+    position: absolute;
+    left: 0;
+}
+
+.universal-center {
+    height: auto;
+    width: 10em;
+    margin: 0 auto;
+    padding: 1.1em;
+    position: relative;
+}
+

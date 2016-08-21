@@ -1,0 +1,14 @@
+body {
+    color: white;
+    margin-top: 150px;
+    background: url('../img/bg2.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    min-height:100%;
+}
+
+html{
+    min-height:100%;
+}

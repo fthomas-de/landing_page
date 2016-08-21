@@ -1,0 +1,73 @@
+<div class="container-fluid"> 
+	<div class="row">
+		{% for name in names_std %}
+		<div class="col-md-2">
+			<table class="table .table-condensed">
+				<h2>{{ name }}</h2>
+				<tr>
+					<th>#</th>
+					<th>Dice</th>
+					<th>Result</th>
+				</tr>
+
+				{% for i, dice, result in tpl[loop.index0] %}
+				<tr>
+					<td>{{ i }}</td>
+					<td><p id="dice{{name}}{{i}}">{{ dice }}</p></td>
+					<td><p id="result{{name}}{{i}}">{{ result }}</p></td>
+
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+		{% endfor %}
+	</div>
+
+	<form action="/dice2/" method="POST">
+		<div class="row">
+			<!-- submit and value are the important ones -->
+			<div class="col-md-1 col-md-offset-4 col-xs-2 col-xs-offset1">
+				<input type="image" src="{{ url_for('static', filename='img/d4.png') }}" name="submit" value="D4" alt="W4"> 
+			</div>
+
+			<div class="col-md-1 col-xs-2">
+				<input type="image" src="{{ url_for('static', filename='img/d6.png') }}" name="submit" value="D6" alt="W6">
+			</div>
+
+			<div class="col-md-1 col-xs-2">
+				<input type="image" src="{{ url_for('static', filename='img/d8.png') }}" name="submit" value="D8" alt="W8">
+			</div>
+
+			<div class="col-md-1 col-xs-2">
+				<input type="image" src="{{ url_for('static', filename='img/d10.png') }}" name="submit" value="D10" alt="W10">
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-1 col-md-offset-4 col-xs-2 col-xs-offset1">
+				<input type="image" src="{{ url_for('static', filename='img/d12.png') }}" name="submit" value="D12" alt="W12">
+			</div>
+
+			<div class="col-md-1 col-xs-2">
+				<input type="image" src="{{ url_for('static', filename='img/d20.png') }}" name="submit" value="D20" alt="W20">
+			</div>
+
+			<div class="col-md-1 col-xs-2">
+				<input type="image" src="{{ url_for('static', filename='img/d100.png') }}" name="submit" value="D100" alt="W100">
+			</div>
+
+			<div class="col-md-1 col-xs-3">
+				<div class="universal-center">
+					<div class="form-group">
+						<select class="form-control" name="select">
+							{% for name in names %}
+							<option>{{ name }}</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</form>
+</div>
